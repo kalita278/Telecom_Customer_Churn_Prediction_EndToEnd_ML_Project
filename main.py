@@ -51,7 +51,7 @@ def train_and_evaluate():
 
     print("Model Evaluation is completed .^.")
 
-    mlflow.set_tracking_uri("https://dagshub.com/kalita278/Telecom_Customer_Churn_Prediction_End_to_End_ML_Project.mlflow")
+    mlflow.set_tracking_uri("https://dagshub.com/kalita278/Telecom_Customer_Churn_Prediction_EndToEnd_ML_Project.mlflow")
     os.environ['MLFLOW_TRACKING_USERNAME'] = "kalita278"
     os.environ['MLFLOW_TRACKING_PASSWORD'] = "eb766988711ad6134d253dc8b82c079114a8a36c"
 
