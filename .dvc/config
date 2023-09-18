@@ -1,4 +1,0 @@
-[core]
-    remote = origin
-['remote "origin"']
-    url = https://DagsHub.com/kalita278/Telecom_Customer_Churn_Prediction_EndToEnd_ML_Project.dvc
