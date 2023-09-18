@@ -16,7 +16,7 @@ class ModelEvaluation:
         
 
         roc_auc_scr_train, accuracy_train, precision_train, recall_train, f1_train = evaluate_metrix(x_train, y_train, model)
-        roc_auc_scr_test, accuracy_test, precision_test, recall_test, f1_test = evaluate_metrix(x_train, y_train, model)
+        roc_auc_scr_test, accuracy_test, precision_test, recall_test, f1_test = evaluate_metrix(x_test, y_test, model)
 
         scores = {"Training Accuracy of the Model {}".format(model):
             {
