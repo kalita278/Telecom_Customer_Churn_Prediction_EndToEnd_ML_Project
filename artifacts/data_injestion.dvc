@@ -1,0 +1,6 @@
+outs:
+- md5: 9e17058c1ee28c0eae63c13fed2b0b10.dir
+  size: 1956831
+  nfiles: 3
+  hash: md5
+  path: data_injestion
