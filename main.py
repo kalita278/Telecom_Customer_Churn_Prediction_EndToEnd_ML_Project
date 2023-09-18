@@ -10,6 +10,7 @@ import pandas as pd
 import mlflow
 import sklearn
 from urllib.parse import urlparse
+import yaml
 
 
 def split():
@@ -63,6 +64,11 @@ def train_and_evaluate():
         # Get metrics
         (roc_auc_scr, accuracy, precision, recall, f1) = evaluate_metrix(x_test, y_test, model)
 
+        #Log parameter
+        para_all = yaml.safe_load(open('params.yaml'))
+        
+        mlflow.log_params(para_all['RandomForest'])
+
         # Log metrics
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("precision", precision)
@@ -73,7 +79,7 @@ def train_and_evaluate():
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         if tracking_url_type_store !="file":
-            mlflow.sklearn.log_model(model, "model", registered_model_name="Decision Tree Model")
+            mlflow.sklearn.log_model(model, "model", registered_model_name="{}".format(model))
         else:
             mlflow.sklearn.log_model(model, "model")
 
