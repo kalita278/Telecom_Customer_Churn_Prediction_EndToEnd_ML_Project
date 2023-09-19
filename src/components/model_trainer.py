@@ -24,14 +24,16 @@ class ModelTrainer:
         x_train, y_train, x_test, y_test = (train_array[:,:-1],train_array[:,-1],test_array[:,:-1],test_array[:,-1])
 
 
-        param = yaml.safe_load(open("params.yaml"))
+        para_all = yaml.safe_load(open('params.yaml'))
+        parameter = para_all['Adaboost']
         
-        model = DecisionTreeClassifier(random_state=1)
+        model = AdaBoostClassifier()
+        model.set_params(**parameter)
         model.fit(x_train, y_train)
 
         save_object(file_path=self.model_trainer_config.model_trainer_config_file_path,obj=model)
 
-        return (x_train, y_train, x_test, y_test,model)
+        return (x_train, y_train, x_test, y_test,model, parameter)
 
 
         

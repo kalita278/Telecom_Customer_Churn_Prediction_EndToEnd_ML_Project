@@ -1,7 +1,6 @@
 import os
 from dataclasses import dataclass
 import yaml
-import pandas as pd
 
 @dataclass
 class DataValidationConfig:
