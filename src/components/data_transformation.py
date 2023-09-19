@@ -43,10 +43,10 @@ class DataTransformation:
 
         preprocessing_obj = self.get_transform_data()
 
-        input_feature_train_df = train_df.drop(['gender','PhoneService','customerID'],axis=1)
+        input_feature_train_df = train_df.drop(['gender','PhoneService','customerID','Churn'],axis=1)
         target_feature_train_df = train_df['Churn']
 
-        input_feature_test_df = test_df.drop(['gender','PhoneService','customerID'],axis=1)
+        input_feature_test_df = test_df.drop(['gender','PhoneService','customerID','Churn'],axis=1)
         target_feature_test_df = test_df['Churn']
 
         input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)

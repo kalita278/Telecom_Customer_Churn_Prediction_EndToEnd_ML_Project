@@ -10,9 +10,9 @@ RandomForest:
   n_estimators: 200
 
 Adaboost:
-  algorithm: 'SAMME.R'
-  learning_rate: 1
-  n_estimators: 50
+  algorithm: 'SAMME'
+  learning_rate: 1.2
+  n_estimators: 200
 
 GradientBoost:
   loss: 'log_loss'
@@ -71,5 +71,3 @@ KNeighbors:
   leaf_size: 1
   p: 2
   metric: 'manhattan'
-
-Naivebayes:
