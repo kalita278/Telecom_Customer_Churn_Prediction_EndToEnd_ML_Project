@@ -1,17 +1,10 @@
-import os
 from src.components.data_injestion import DataInjestion
 from src.components.data_validation import DataValidation
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 from src.components.model_evaluation import ModelEvaluation
-from src.utils import evaluate_metrix
 import argparse
 import pandas as pd
-import mlflow
-import sklearn
-from urllib.parse import urlparse
-import yaml
-
 
 def split():
     
@@ -41,47 +34,16 @@ def train_and_evaluate():
     print("Initiate: Model Training is initiated....")
     
     model_trainer = ModelTrainer()
-    x_train, y_train, x_test, y_test, model = model_trainer.initiate_model_trainer(train_arr,test_arr)
+    x_train, y_train, x_test, y_test, model, parameter = model_trainer.initiate_model_trainer(train_arr,test_arr)
 
     print("Model Training is completed .^.")
     print("Initiate: Model Evaluation is initiated....")
 
     model_evaluate = ModelEvaluation()
-    print("Accuracy Score for of the model:",model_evaluate.initiate_model_evaluation(x_train, y_train, x_test, y_test, model))
+    print("Accuracy Score for of the model:",model_evaluate.initiate_model_evaluation(x_train, y_train, x_test, y_test, model, parameter))
 
 
     print("Model Evaluation is completed .^.")
-
-    mlflow.set_tracking_uri("https://dagshub.com/kalita278/Telecom_Customer_Churn_Prediction_EndToEnd_ML_Project.mlflow")
-    os.environ['MLFLOW_TRACKING_USERNAME'] = "kalita278"
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = "eb766988711ad6134d253dc8b82c079114a8a36c"
-
-    with mlflow.start_run():
-
-        # Get predictions
-        prediction = model.predict(x_test)
-
-        # Get metrics
-        (roc_auc_scr, accuracy, precision, recall, f1) = evaluate_metrix(x_test, y_test, model)
-
-        #Log parameter
-        para_all = yaml.safe_load(open('params.yaml'))
-        
-        mlflow.log_params(para_all['RandomForest'])
-
-        # Log metrics
-        mlflow.log_metric("accuracy", accuracy)
-        mlflow.log_metric("precision", precision)
-        mlflow.log_metric("recall", recall)
-        mlflow.log_metric('f1', f1)
-        mlflow.log_metric("roc_auc_score", roc_auc_scr)
-
-        tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
-
-        if tracking_url_type_store !="file":
-            mlflow.sklearn.log_model(model, "model", registered_model_name="{}".format(model))
-        else:
-            mlflow.sklearn.log_model(model, "model")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
