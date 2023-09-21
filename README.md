@@ -31,21 +31,23 @@ The  objective,  as  a  data  scientist  hired  by  the  telecom  company,  is  
 
 
 
-## **DATA PREPARATION AND EXPLORATION:**
+## **DATA EXPLORATION AND DATA CLEANING:**
 
-Combined  two files (dataset) to create a single file with all the relevant variables and perform the necessary data quality and validation. In data cleaning, identified the missing values/unexpected values and outliers in the dataset (if any) and impute that with the mean value. Also, make sure that data types of the variables are appropriate as required for our analysis.
+Combined the two files to create a single file with all the relevant variables and perform the necessary data quality checks and cleaning. In data cleaning, identified the missing values/unexpected values in the dataset and since the number of missing values is very less, dropped the missing value rows. Also, checked if there is any outliers in the dataset. Make sure that the data types of the variables are appropriate as required for our analysis (Here, converted all the categorical variable data types to category and continuous variable data types to int or float).
 
 ## **DATA ANALYSIS:**
 
-Here, performed uni-variate, bivariate, and multivariate analysis of the dataset, for example, 5 point summary of the continuous variable, pair plot, joint plot, correlation plot, and boxplot to detect outliers.
+Checked the distribution of data for the continuous (histogram charts) and categorical (pie charts) variables along with the target variable (pie charts). Performed uni-variate, bivariate, and multivariate analysis of the dataset, for example, 5-point summary of the continuous variable, pair plot, correlation matrix plot, and boxplot to detect outliers.
+
 
 ## **DATA PREPROCESSING:**
 
-Encoded the target variable and scaled the independent variable using label encoder and one hot encoder and standardscaler respectively.
+Here, removed the unwanted/irrelevant independent variable/feature based on the above analysis from the dataset. Also, encoded the categorical variable using one-hot encoding and label encoding based on the categories, and scaled the independent variable using standard scaler.
+
 
 ## **MODEL BUILDING, EVALUATION AND IMPROVEMENT:**
 
-Build machine learning models to detect the customer churn and evaluate the model using confusion metrix, accuracy score, recall score, precision score and f1 score. Further tunned the model using GridsearchCV to reduce the overfitting of the model.
+Used k nearest neighbour, logistic regression, support vector machine (SVM), naive bayes, decision tree, random forest, Ada boost and gradient boost algorithm to predict the churn customer and evaluate the model using confusion metrix, accuracy score, recall score, precision score and f1 score. Further tunned the models using GridsearchCV and compared all the models to find the best model.
 
 ## **MLOPS:**
 Used mlops tools to version the model and data that becomes scalable and reproducable in future.
