@@ -72,7 +72,7 @@ MLFlow, DVC, GIT, Dagshub
 ### **How to use it**
 To use this project, first clone the repo on your device using the command below:
 
-git clone https://github.com/yashrajjain726/Carsify-The-Car-Price-Predictor
+git clone https://github.com/kalita278/Telecom_Customer_Churn_Prediction_EndToEnd_ML_Project.git
 
 ## **Installation**
 pip install -r requirements.txt
